@@ -10,7 +10,7 @@ Repository: https://github.com/evanvenzor/tapeshelf-reference
 | 1. Public HTTPS site on approved free hosting | Passed. New Cloudflare Pages Direct Upload project; production returns HTTP 200. All deployable file hashes match the tested release. |
 | 2. Mobile and desktop search/filter works | Nine Chromium checks pass at 1440, 390 and 320 px. Desktop/mobile screenshots visually reviewed; reset, combined filters, empty results, keyboard focus, navigation, no-JavaScript records and overflow covered. The same nine checks also passed against the actual public HTTPS site. |
 | 3. Source-backed initial information | Seven selected manufacturer-backed records and original guidance. Ambiguous TZe-631 excluded. No physical fit testing or stock claims. |
-| 4. CI passes and scheduled cloud check runs | CI passes 38 deterministic tests and nine browser checks. Actual schedule-event evidence pending; manual operations succeeded. |
+| 4. CI passes and scheduled cloud check runs | CI passes 38 deterministic tests and nine browser checks. UNVERIFIED: manual operations succeeded, but GitHub has not emitted a timer event. Workflow active on main; OPERATIONS_APPROVED=true. |
 | 5. Automated publishing demonstrated or model gate documented | Permitted blocked-model path: unattended publication explicitly blocked pending approved hosted execution, scoped credentials and a cost estimate. |
 | 6. Affiliate integration gated and disclosed | Passed. Disabled by default, negative tests cover activation requirements; no application or agreement submitted. |
 | 7. Weekly reporting job runs | Passed. Cloud operations generated a report with missing metrics labeled Unavailable and delivered it to the approved GitHub job summary. |
@@ -31,6 +31,12 @@ Repository: https://github.com/evanvenzor/tapeshelf-reference
 - Two queue entries remain deliberately unpublished: the conflicting TZe-631 specification and other models/specialty tapes outside V1.
 
 The deterministic suite covers schema errors, duplicate IDs/variants, evidence status, dimensions/family limits, HTTPS source allowlists, per-SKU source mapping, dates, excluded records, combined/normalized searches, missing results, affiliate gates, release prerequisites, network failures, redirects, stale reviews, unavailable metrics, broken links/anchors and artifact corruption. The browser tests caught and led to repairs for select-label accessibility and a native form-reset timing defect.
+
+## Outstanding acceptance blocker
+
+At 16:46 UTC on November 18, 2026, the GitHub Actions API returned no runs with event=schedule. Temporary opportunities at 16:35 and 16:45 UTC produced no observed event during this session; the cause is not established. GitHub documents that schedule delivery can be delayed or dropped. The workflow is active on the default branch and its approval variable is true. Manual execution successfully validates the production site and produces the report, so this is not presented as a job-code failure.
+
+Temporary triggers have been removed. Daily 09:23 UTC and Monday 10:37 UTC schedules remain enabled. The next regular daily opportunity is November 19 at 09:23 UTC, subject to GitHub delivery. No further owner authorization is needed. Final acceptance requires observing a successful actual schedule event and recording its URL here; a manual dispatch is insufficient. V1 must not be described as fully accepted before that evidence exists.
 
 ## Operating limits
 
