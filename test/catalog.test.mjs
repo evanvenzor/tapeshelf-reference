@@ -70,6 +70,12 @@ test('deployment verifies every asset and detects an incorrect deployed artifact
     const success=await deploymentCheck(c,{fetcher:async url=>{calls++;return new Response(await readFile(root+'/dist/'+new URL(url).pathname.slice(1)));}});
     assert.equal(success.status,'passed');assert.equal(calls,Object.keys(manifest.files).length-1);
     const failed=await deploymentCheck(c,{fetcher:async()=>new Response('unexpected page')});assert.equal(failed.status,'failed');assert.match(failed.reason,/differs/);
+    const redirected=await deploymentCheck(c,{fetcher:async url=>{
+      const path=new URL(url).pathname;
+      if(path.endsWith('.html'))return new Response(null,{status:301,headers:{location:path==='/index.html'?'/':path.slice(0,-5)}});
+      const filename=path==='/'?'index.html':path.slice(1)+(path.includes('.')?'':'.html');
+      return new Response(await readFile(root+'/dist/'+filename));
+    }});assert.equal(redirected.status,'passed');
     const login=await deploymentCheck(c,{fetcher:async()=>new Response(null,{status:302,headers:{location:'/login'}})});assert.equal(login.status,'failed');
   }finally{await writeFile(manifestFile,original);}
 });

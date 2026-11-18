@@ -52,17 +52,25 @@ export async function deploymentCheck(config,{fetcher=fetch,manifestPath=join(ro
     for(const [name,hash] of Object.entries(expected.files)){
       if(name==='_headers') continue; // Hosting control file, not a public asset.
       if(!/^[\w.-]+$/.test(name)) throw new Error('Unsafe manifest path');
-      const response=await fetcher(new URL(name,origin),{redirect:'manual',signal:AbortSignal.timeout(15000)});
-      if(!response.ok) throw new Error(name+': HTTP '+response.status);
+      let response=await fetcher(new URL(name,origin),{redirect:'manual',signal:AbortSignal.timeout(15000)});
+      if([301,302,307,308].includes(response.status)&&name.endsWith('.html')){
+        const destination=new URL(response.headers.get('location')||'',origin);
+        const cleanPath=name==='index.html'?'/':'/'+name.slice(0,-5);
+        if(destination.origin!==origin.origin||destination.pathname!==cleanPath||destination.search||destination.hash) throw new Error(name+': unexpected redirect');
+        await response.body?.cancel();
+        response=await fetcher(destination,{redirect:'manual',signal:AbortSignal.timeout(15000)});
+      }
+      if(!response.ok && !(name==='404.html'&&response.status===404)) throw new Error(name+': HTTP '+response.status);
       const actual=createHash('sha256').update(Buffer.from(await response.arrayBuffer())).digest('hex');
       if(actual!==hash) throw new Error(name+': deployed content differs from validated artifact');
     }
     return {status:'passed',reason:'HTTPS content hashes match all deployable files'};
   }catch(error){return {status:'failed',reason:error.message};}
 }
-export function weeklyReport({checks,links,deployment,queue,now=new Date()}){
+export function weeklyReport({checks,links,deployment,queue,config,now=new Date()}){
   const failedLinks=links?.results.filter(r=>r.status!=='reachable').length;
-  return `# TapeShelf operating report\n\nGenerated: ${now.toISOString()}\n\n| Metric | Result |\n| --- | --- |\n| Visitors | Unavailable — analytics not authorized or connected |\n| Search impressions / clicks | Unavailable — Search Console not connected |\n| Outbound affiliate clicks | Unavailable — affiliate links and tracking disabled |\n| Attributed earnings | Unavailable — no affiliate reporting account |\n| New verified pages published this week | Unavailable — no approved publication ledger |\n| Local validation | ${checks?.passed?'Passed':'Failed or unavailable'} |\n| Source checks needing review | ${failedLinks===undefined?'Unavailable — check not run':failedLinks} |\n| Deployment check | ${deployment?.status||'unavailable'} |\n| Research queue | ${queue?.length??'Unavailable'} items |\n| Recurring cost estimate | $0 target for static free hosting and free cloud checks; paid features disabled |\n| Actual account charges | Unavailable — billing API permission not granted |\n\n## Exceptions and gates\n\n- ${deployment?.reason||'Deployment has not been checked.'}\n- Public hosting, contact availability and report delivery require owner approval.\n- Private GitHub Actions allowance is unverified; do not enable metered private runs without a no-charge billing limit.\n- Unattended AI publication is blocked pending an approved hosted model, scoped credentials and a cost estimate.\n- Source reachability is not semantic verification. No queued item is automatically published.\n\n${(links?.results||[]).filter(r=>r.status!=='reachable').map(r=>`- ${r.url}: ${r.status} — ${r.reason}`).join('\n')}\n`;
+  const approval=config?.publicationApproved&&config?.hostingApproved&&config?.reportDeliveryApproved?'Public Cloudflare Pages Free launch, public repository and GitHub job-summary delivery approved by owner on 2026-11-18.':'Public hosting, contact availability and report delivery require owner approval.';
+  return `# TapeShelf operating report\n\nGenerated: ${now.toISOString()}\n\n| Metric | Result |\n| --- | --- |\n| Visitors | Unavailable — analytics not authorized or connected |\n| Search impressions / clicks | Unavailable — Search Console not connected |\n| Outbound affiliate clicks | Unavailable — affiliate links and tracking disabled |\n| Attributed earnings | Unavailable — no affiliate reporting account |\n| New verified pages published this week | Unavailable — no approved publication ledger |\n| Validation | ${checks?.passed?'Passed':'Failed or unavailable'} |\n| Source checks needing review | ${failedLinks===undefined?'Unavailable — check not run':failedLinks} |\n| Deployment check | ${deployment?.status||'unavailable'} |\n| Research queue | ${queue?.length??'Unavailable'} items |\n| Recurring cost estimate | $0 for approved static free hosting and public standard-runner checks; paid features disabled |\n| Actual account charges | Unavailable — billing API permission not granted |\n\n## Exceptions and gates\n\n- ${deployment?.reason||'Deployment has not been checked.'}\n- ${approval}\n- Private GitHub Actions allowance is unverified; metered private runs remain disabled.\n- Unattended AI publication is blocked pending an approved hosted model, scoped credentials and a cost estimate.\n- Source reachability is not semantic verification. No queued item is automatically published.\n\n${(links?.results||[]).filter(r=>r.status!=='reachable').map(r=>`- ${r.url}: ${r.status} — ${r.reason}`).join('\n')}\n`;
 }
 async function run(command){
   await mkdir(out,{recursive:true});
@@ -80,7 +88,7 @@ async function run(command){
   else {try{links=JSON.parse(await readFile(join(out,'links.json'),'utf8'));}catch{links=null;}}
   const deployment=await deploymentCheck(config);
   const queue=researchQueue(data,links);
-  const summary=weeklyReport({checks,links,deployment,queue});
+  const summary=weeklyReport({checks,links,deployment,queue,config});
   const status={checkedAt:new Date().toISOString(),checks,links,deployment,queue};
   await writeFile(join(out,'status.json'),JSON.stringify(status,null,2));
   await writeFile(join(out,'research-queue.json'),JSON.stringify(queue,null,2));
