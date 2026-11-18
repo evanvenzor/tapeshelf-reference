@@ -1,13 +1,13 @@
 {
-  "checkedAt": "2026-11-18T16:21:03.596Z",
+  "checkedAt": "2026-11-18T16:34:53.542Z",
   "checks": {
     "passed": true,
     "files": 16,
     "internalLinks": 104,
-    "bytes": 55101
+    "bytes": 56462
   },
   "links": {
-    "checkedAt": "2026-11-18T16:15:50.334Z",
+    "checkedAt": "2026-11-18T16:34:50.940Z",
     "results": [
       {
         "url": "https://www.brother-usa.com/p/label-makers/PTD210",
@@ -83,8 +83,8 @@
     "passed": true
   },
   "deployment": {
-    "status": "unavailable",
-    "reason": "Public deployment is pending owner approval"
+    "status": "passed",
+    "reason": "HTTPS content hashes match all deployable files"
   },
   "queue": [
     {

@@ -1,6 +1,6 @@
 # TapeShelf operating report
 
-Generated: 2026-11-18T16:21:03.596Z
+Generated: 2026-11-18T16:34:53.542Z
 
 | Metric | Result |
 | --- | --- |
@@ -9,17 +9,19 @@ Generated: 2026-11-18T16:21:03.596Z
 | Outbound affiliate clicks | Unavailable — affiliate links and tracking disabled |
 | Attributed earnings | Unavailable — no affiliate reporting account |
 | New verified pages published this week | Unavailable — no approved publication ledger |
-| Local validation | Passed |
+| Validation | Passed |
 | Source checks needing review | 0 |
-| Deployment check | unavailable |
+| Deployment check | passed |
 | Research queue | 2 items |
-| Recurring cost estimate | $0 target for static free hosting and free cloud checks; paid features disabled |
+| Recurring cost estimate | $0 for approved static free hosting and public standard-runner checks; paid features disabled |
 | Actual account charges | Unavailable — billing API permission not granted |
 
 ## Exceptions and gates
 
-- Public deployment is pending owner approval
-- Public hosting, contact availability and report delivery require owner approval.
-- Private GitHub Actions allowance is unverified; do not enable metered private runs without a no-charge billing limit.
+- HTTPS content hashes match all deployable files
+- Public Cloudflare Pages Free launch, public repository and GitHub job-summary delivery approved by owner on 2026-11-18.
+- Private GitHub Actions allowance is unverified; metered private runs remain disabled.
 - Unattended AI publication is blocked pending an approved hosted model, scoped credentials and a cost estimate.
 - Source reachability is not semantic verification. No queued item is automatically published.
+
+
