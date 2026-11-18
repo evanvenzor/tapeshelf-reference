@@ -14,7 +14,15 @@ if (form) {
   form.addEventListener('input', apply);
   form.addEventListener('change', apply);
   form.addEventListener('submit', event => { event.preventDefault(); apply(); });
-  form.addEventListener('reset', () => { queueMicrotask(apply); });
+  // Native reset's default action can run after the listener's microtask.
+  // Reset explicitly so the controls and rendered results change together.
+  form.addEventListener('reset', event => {
+    event.preventDefault();
+    form.elements.query.value = '';
+    form.elements.width.value = '';
+    form.elements.background.value = '';
+    apply();
+  });
   document.querySelectorAll('[data-width]').forEach(button => button.addEventListener('click', () => {
     form.elements.width.value = button.dataset.width;
     apply(); form.elements.query.focus();

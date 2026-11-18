@@ -8,6 +8,8 @@ test('catalog controls, combined filters, empty state and reset', async ({ page 
   await expect(page.locator('.record:visible')).toHaveCount(1);
   await expect(page.locator('.record:visible h3')).toHaveText('TZe-231');
   await page.getByRole('button',{name:'Reset filters'}).click();
+  await expect(page.locator('.record:visible')).toHaveCount(7);
+  await expect(page.getByRole('status')).toHaveText('7 of 7 tapes');
   await page.getByLabel('Tape width',{exact:true}).selectOption('9');
   await page.getByLabel('Background color').selectOption('Clear');
   await expect(page.locator('.record:visible h3')).toHaveText('TZe-121');
@@ -19,6 +21,8 @@ test('catalog controls, combined filters, empty state and reset', async ({ page 
   await expect(page.locator('.record:visible')).toHaveCount(3);
   await expect(page.getByLabel('Search the catalog')).toBeFocused();
   await page.getByRole('button',{name:'Reset filters'}).click();
+  await expect(page.locator('.record:visible')).toHaveCount(7);
+  await expect(page.getByRole('status')).toHaveText('7 of 7 tapes');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   expect(errors).toEqual([]);
   await page.screenshot({path:`test-results/${info.project.name}.png`,fullPage:true});
