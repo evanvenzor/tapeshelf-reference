@@ -30,7 +30,7 @@ test('catalog controls, combined filters, empty state and reset', async ({ page 
 test('navigation, guide disclosure and contact links',async({page})=>{
   await page.goto('/');
   await page.getByRole('link',{name:'Field guide',exact:true}).click();
-  await expect(page).toHaveURL(/guide\.html$/);
+  await expect(page).toHaveURL(/\/guide(?:\.html)?$/);
   await page.getByText('Too much blank space around the text',{exact:true}).click();
   await expect(page.getByText(/Review the Half, Narrow and Chain Print/)).toBeVisible();
   for(const path of ['about.html','sources.html','privacy.html','disclosure.html','contact.html']){
@@ -40,13 +40,13 @@ test('navigation, guide disclosure and contact links',async({page})=>{
   }
   await expect(page.getByRole('link',{name:'Open a correction on GitHub →'})).toHaveAttribute('href',/github\.com\/evanvenzor\/tapeshelf-reference\/issues\/new/);
 });
-test('keyboard focus, no tracking and no-JavaScript content',async({page,browser})=>{
+test('keyboard focus, no tracking and no-JavaScript content',async({page,browser,baseURL})=>{
   await page.goto('/');
   await page.keyboard.press('Tab');
   await expect(page.getByRole('link',{name:'Skip to content'})).toBeFocused();
   expect(await page.evaluate(()=>({cookies:document.cookie,local:localStorage.length,session:sessionStorage.length}))).toEqual({cookies:'',local:0,session:0});
   const context=await browser.newContext({javaScriptEnabled:false});
-  const plain=await context.newPage();await plain.goto('http://127.0.0.1:4173/');
+  const plain=await context.newPage();await plain.goto(baseURL+'/');
   await expect(plain.locator('.record')).toHaveCount(7);
   await expect(plain.getByText(/All seven records are shown below/)).toBeVisible();
   await context.close();
