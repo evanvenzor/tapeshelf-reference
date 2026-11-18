@@ -7,7 +7,9 @@ import { build,root } from '../scripts/build.mjs';
 import { check } from '../scripts/check.mjs';
 import { probe,researchQueue,weeklyReport,deploymentCheck } from '../scripts/operations.mjs';
 const catalog=JSON.parse(await readFile(new URL('../data/catalog.json',import.meta.url),'utf8'));
-const config=JSON.parse(await readFile(new URL('../config.json',import.meta.url),'utf8'));
+const liveConfig=JSON.parse(await readFile(new URL('../config.json',import.meta.url),'utf8'));
+const config={...liveConfig,publicationApproved:false,hostingApproved:false,publicContactApproved:false,siteUrl:'',hostingProvider:'',hostingPrivacyUrl:''};
+test('current project configuration validates',()=>assert.equal(validateConfig(liveConfig),true));
 const clone=value=>structuredClone(value);
 test('all records satisfy scoped schema and evidence requirements',()=>assert.equal(validateCatalog(catalog),true));
 for(const [name,mutate] of [

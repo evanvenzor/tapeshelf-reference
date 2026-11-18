@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node --test",
+    "test": "node --test test/catalog.test.mjs",
+    "test:browser": "playwright test",
     "check": "node scripts/check.mjs",
     "links": "node scripts/operations.mjs links",
     "report": "node scripts/operations.mjs report",
     "operations": "node scripts/operations.mjs all",
     "preview": "node scripts/serve.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.1"
   }
 }

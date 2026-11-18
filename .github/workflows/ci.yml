@@ -14,11 +14,20 @@ jobs:
     # Private account allowance is unverified. Do not incur charges by default.
     if: github.event.repository.private == false || vars.ALLOW_PRIVATE_ACTIONS == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      - run: node --version
-      - run: node --test
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - run: node --test test/catalog.test.mjs
       - run: node scripts/check.mjs
+      - run: npm install --global pnpm@11.25.0 --ignore-scripts --no-audit --no-fund
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm exec playwright test
+      - name: Emit bounded preview evidence to run log
+        if: always()
+        run: node scripts/emit-previews.mjs
