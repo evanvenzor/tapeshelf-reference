@@ -1,23 +1,25 @@
-# Exact remaining owner actions
+# Authorization record and remaining actions
 
-The master specification explicitly says no deployment, affiliate application, contract, purchase or publishing under the owner's identity is authorized by that document. Its execution rules require approval for public deployment. The later chat request retained the authorization requirement. The implementation therefore stops before public release.
+## Approved in chat on 2026-11-18
 
-## Recommended launch decision
+The owner selected “Approve this free launch plan” for public TapeShelf hosting on Cloudflare Pages Free (static assets only), a public evanvenzor/tapeshelf-reference repository, standard free GitHub Actions, GitHub job summaries for reports, and public GitHub Issues for corrections. No paid service, domain purchase or affiliate agreement is included.
 
-Approve public release of **TapeShelf**, the seven-record PT-D210 reference, on **Cloudflare Pages Free with static assets only**, and connect the Cloudflare account to this repository with the minimum required access. If that connection requires account creation or accepting terms, the owner must authorize the specific agreement. No paid plan, paid trial, domain purchase, Functions or other paid feature is proposed.
+The repository is public, Actions is enabled and OPERATIONS_APPROVED=true. Private metered runs remain disabled. Do not ask the owner to repeat these approvals.
 
-For a single no-charge operations/contact path, also approve making `evanvenzor/tapeshelf-reference` public, running its standard Linux GitHub Actions, and using its **GitHub Actions job summaries** for reports and **GitHub Issues** for public correction submissions. This exposes the new project's source and reports under the owner's GitHub identity; no unrelated repository changes are proposed. If source must remain private, keep Actions disabled until the owner confirms a no-overage free allowance and choose an approved public contact method.
+## Account connection completed
 
-These are specific authorization gates, not a request for routine implementation decisions. No cloud checks have run while the private account's remaining billing allowance is unknown. A read-only billing lookup returned 404 and indicated the token lacks `user` scope; credentials were not broadened.
+The owner completed Cloudflare device authorization on November 18, 2026. Pages access was added while preserving the existing login permissions. The new tapeshelf-reference Pages project was created and its static release deployed successfully. No tokens were copied into this repository or GitHub secrets.
 
-## Additional gates that may remain disabled in V1
+The first callback attempt expired; the replacement authorization succeeded. No repeated account approval is currently needed.
 
-- Affiliate application, terms, publisher identifiers and links: disabled. Not needed to release an unpaid reference.
-- Search Console property access and optional privacy-conscious analytics: pending account authorization. Sitemap and verification-token support are prepared. No indexing or traffic data is fabricated.
-- Hosted model execution: blocked; requires a real runner/model connection, scoped secret and an approved cost estimate before enabling. Deterministic checks do not constitute unattended AI generation.
+## Remaining disabled gates
 
-## Environment blocker
+- Affiliate applications, agreements, identifiers and links remain disabled. They are not required for unpaid reference publication.
+- Search Console access and optional analytics require separate account authorization. Sitemap and verification-token support are prepared; no metrics are invented.
+- Hosted model publication is explicitly blocked pending a real execution mechanism, scoped credentials and an approved cost estimate. Deterministic checks are not AI research.
 
-Computer Use stopped this turn because it could not determine Chrome's current URL confidently enough to enforce policy. No browser interactions were attempted afterward. Desktop/mobile visual behavior, keyboard navigation and real control interaction still need browser QA in an available session before acceptance. The local server responded, but an HTTP response is not a visual test.
+## Browser verification
 
-Sites account access was verified as an alternative. Its current documented free period ends December 31, 2026, so it was not silently selected as indefinitely free hosting. No Site or custom domain was created. The code is portable to either provider; the public URL must come from an actual approved deployment.
+Windows Computer Use stopped because it could not confidently determine Chrome's URL for policy enforcement; no further Windows browser automation was attempted. Application browser tests instead run on the approved free GitHub runner against its own test server. Desktop (1440 px), mobile (390 px) and narrow mobile (320 px) tests run with screenshots for visual review. Testing exposed and fixed select-label accessibility and native form-reset timing issues. See ACCEPTANCE.md for final run evidence.
+
+The approved public launch and repository publication were performed. No spending, new agreement, email, external outreach or unrelated repository changes were performed.
