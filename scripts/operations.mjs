@@ -43,7 +43,8 @@ export function researchQueue(data,links,now=new Date()){
   return [...new Map(queue.map(r=>[r.id,r])).values()];
 }
 export async function deploymentCheck(config,{fetcher=fetch,manifestPath=join(root,'dist/integrity.json')}={}){
-  if(!config.publicationApproved||!config.hostingApproved||!config.siteUrl) return {status:'unavailable',reason:'Public deployment is pending owner approval'};
+  if(!config.publicationApproved||!config.hostingApproved) return {status:'unavailable',reason:'Public deployment is pending owner approval'};
+  if(!config.siteUrl) return {status:'unavailable',reason:'Approved launch awaits Cloudflare Pages authorization and first deployment'};
   try{
     const expected=JSON.parse(await readFile(manifestPath,'utf8'));
     if(!expected.release) throw new Error('Local artifact is a review build, not a release');
