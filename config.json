@@ -1,0 +1,22 @@
+{
+  "name": "TapeShelf",
+  "siteUrl": "",
+  "repositoryUrl": "https://github.com/evanvenzor/tapeshelf-reference",
+  "publicationApproved": false,
+  "hostingApproved": false,
+  "hostingProvider": "",
+  "hostingPrivacyUrl": "",
+  "publicContactApproved": false,
+  "reportDeliveryApproved": false,
+  "searchConsoleVerification": "",
+  "analytics": { "enabled": false, "provider": null },
+  "affiliate": {
+    "enabled": false,
+    "program": "Brother via Impact",
+    "agreementApproved": false,
+    "publisherId": "",
+    "approvedHosts": [],
+    "links": {}
+  },
+  "aiPublishing": { "enabled": false, "status": "blocked_pending_approved_hosted_model" }
+}

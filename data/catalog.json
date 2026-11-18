@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "PT-D210",
+  "market": "US",
+  "reviewedAt": "2026-11-18",
+  "supportedWidths": [3.5, 6, 9, 12],
+  "modelSource": "https://www.brother-usa.com/p/label-makers/PTD210",
+  "manualSource": "https://download.brother.com/welcome/docp100136/ptd210_use_ug_d0123w001_02.pdf",
+  "records": [
+    { "id": "tze-211", "sku": "TZe-211", "widthMm": 6, "ink": "Black", "background": "White", "family": "TZe", "finish": "Laminated", "adhesive": "Standard", "lengthM": 8, "status": "verified", "reviewedAt": "2026-11-18", "sourceUrl": "https://brothermobilesolutions.com/products/media/tapes/tze211/", "evidence": "Product SKU, heading and description identify 6 mm, 8 m, black on white, standard adhesive and laminated construction. Model specifications independently list TZe and 6 mm." },
+    { "id": "tze-221", "sku": "TZe-221", "widthMm": 9, "ink": "Black", "background": "White", "family": "TZe", "finish": "Laminated", "adhesive": "Standard", "lengthM": 8, "status": "verified", "reviewedAt": "2026-11-18", "sourceUrl": "https://brothermobilesolutions.com/products/media/tapes/tze221/", "evidence": "Product SKU, heading and description identify 9 mm, 8 m, black on white, standard adhesive and laminated construction. Model specifications independently list TZe and 9 mm." },
+    { "id": "tze-231", "sku": "TZe-231", "widthMm": 12, "ink": "Black", "background": "White", "family": "TZe", "finish": "Laminated", "adhesive": "Standard", "lengthM": 8, "status": "verified", "reviewedAt": "2026-11-18", "sourceUrl": "https://brothermobilesolutions.com/products/media/tapes/tze231/", "evidence": "Product SKU, heading and description identify 12 mm, 8 m, black on white, standard adhesive and laminated construction. Model specifications independently list TZe and 12 mm." },
+    { "id": "tze-111", "sku": "TZe-111", "widthMm": 6, "ink": "Black", "background": "Clear", "family": "TZe", "finish": "Laminated", "adhesive": "Standard", "lengthM": 8, "status": "verified", "reviewedAt": "2026-11-18", "sourceUrl": "https://brothermobilesolutions.com/products/media/tapes/tze111/", "evidence": "Manufacturer product heading identifies 6 mm, 8 m, black on clear, standard adhesive and laminated tape. Model specifications independently list TZe and 6 mm." },
+    { "id": "tze-121", "sku": "TZe-121", "widthMm": 9, "ink": "Black", "background": "Clear", "family": "TZe", "finish": "Laminated", "adhesive": "Standard", "lengthM": 8, "status": "verified", "reviewedAt": "2026-11-18", "sourceUrl": "https://brothermobilesolutions.com/products/media/tapes/tze121/", "evidence": "Product SKU, heading and description identify 9 mm, 8 m, black on clear, standard adhesive and laminated construction. Model specifications independently list TZe and 9 mm." },
+    { "id": "tze-131", "sku": "TZe-131", "widthMm": 12, "ink": "Black", "background": "Clear", "family": "TZe", "finish": "Laminated", "adhesive": "Standard", "lengthM": 8, "status": "verified", "reviewedAt": "2026-11-18", "sourceUrl": "https://brothermobilesolutions.com/products/media/tapes/tze131/", "evidence": "Product SKU, heading and description identify 12 mm, 8 m, black on clear, standard adhesive and laminated construction. Model specifications independently list TZe and 12 mm." },
+    { "id": "tze-335", "sku": "TZe-335", "widthMm": 12, "ink": "White", "background": "Black", "family": "TZe", "finish": "Laminated", "adhesive": "Standard", "lengthM": 8, "status": "verified", "reviewedAt": "2026-11-18", "sourceUrl": "https://brothermobilesolutions.com/products/media/tapes/tze335/", "evidence": "Manufacturer product heading identifies 12 mm, 8 m, white on black, standard adhesive and laminated tape. Model specifications independently list TZe and 12 mm." }
+  ],
+  "excluded": [
+    { "id": "tze-631", "reason": "Manufacturer page title and heading report 18 mm while other Brother catalog material reports 12 mm. Excluded until the conflict is resolved; do not infer compatibility from the SKU.", "sourceUrl": "https://brothermobilesolutions.com/products/media/tapes/tze631/" },
+    { "id": "other-models-and-specialty-tapes", "reason": "Outside the V1 scope. No extrapolation to other models, heat-shrink, third-party cartridges or safety-critical applications.", "sourceUrl": "https://www.brother-usa.com/p/label-makers/PTD210" }
+  ]
+}

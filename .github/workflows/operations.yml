@@ -1,0 +1,29 @@
+name: Scheduled reference checks and weekly report
+on:
+  schedule:
+    - cron: '23 9 * * *'
+    - cron: '37 10 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: reference-operations
+  cancel-in-progress: false
+jobs:
+  operations:
+    if: (github.event.repository.private == false || vars.ALLOW_PRIVATE_ACTIONS == 'true') && vars.OPERATIONS_APPROVED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Run validation, links, research queue and report
+        run: node scripts/operations.mjs all
+      - name: Record job outcome
+        if: always()
+        run: |
+          if [ -f reports/status.json ]; then cat reports/status.json; fi
+          if [ -f reports/research-queue.json ]; then cat reports/research-queue.json; fi
+      # Reports use the approved GitHub job summary; no email or outbound webhook.
+      # No artifact/cache upload, write token, publication step, model API or paid action.

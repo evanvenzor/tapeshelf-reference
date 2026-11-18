@@ -1,0 +1,105 @@
+{
+  "checkedAt": "2026-11-18T16:21:03.596Z",
+  "checks": {
+    "passed": true,
+    "files": 16,
+    "internalLinks": 104,
+    "bytes": 55101
+  },
+  "links": {
+    "checkedAt": "2026-11-18T16:15:50.334Z",
+    "results": [
+      {
+        "url": "https://www.brother-usa.com/p/label-makers/PTD210",
+        "finalUrl": "https://www.brother-usa.com/p/label-makers/PTD210",
+        "status": "reachable",
+        "httpStatus": 200,
+        "reason": "HTTP reachability only; claims still require review"
+      },
+      {
+        "url": "https://download.brother.com/welcome/docp100136/ptd210_use_ug_d0123w001_02.pdf",
+        "finalUrl": "https://download.brother.com/welcome/docp100136/ptd210_use_ug_d0123w001_02.pdf",
+        "status": "reachable",
+        "httpStatus": 200,
+        "reason": "HTTP reachability only; claims still require review"
+      },
+      {
+        "url": "https://brothermobilesolutions.com/products/media/tapes/tze211/",
+        "finalUrl": "https://brothermobilesolutions.com/products/media/tapes/tze211/",
+        "status": "reachable",
+        "httpStatus": 200,
+        "reason": "HTTP reachability only; claims still require review"
+      },
+      {
+        "url": "https://brothermobilesolutions.com/products/media/tapes/tze221/",
+        "finalUrl": "https://brothermobilesolutions.com/products/media/tapes/tze221/",
+        "status": "reachable",
+        "httpStatus": 200,
+        "reason": "HTTP reachability only; claims still require review"
+      },
+      {
+        "url": "https://brothermobilesolutions.com/products/media/tapes/tze231/",
+        "finalUrl": "https://brothermobilesolutions.com/products/media/tapes/tze231/",
+        "status": "reachable",
+        "httpStatus": 200,
+        "reason": "HTTP reachability only; claims still require review"
+      },
+      {
+        "url": "https://brothermobilesolutions.com/products/media/tapes/tze111/",
+        "finalUrl": "https://brothermobilesolutions.com/products/media/tapes/tze111/",
+        "status": "reachable",
+        "httpStatus": 200,
+        "reason": "HTTP reachability only; claims still require review"
+      },
+      {
+        "url": "https://brothermobilesolutions.com/products/media/tapes/tze121/",
+        "finalUrl": "https://brothermobilesolutions.com/products/media/tapes/tze121/",
+        "status": "reachable",
+        "httpStatus": 200,
+        "reason": "HTTP reachability only; claims still require review"
+      },
+      {
+        "url": "https://brothermobilesolutions.com/products/media/tapes/tze131/",
+        "finalUrl": "https://brothermobilesolutions.com/products/media/tapes/tze131/",
+        "status": "reachable",
+        "httpStatus": 200,
+        "reason": "HTTP reachability only; claims still require review"
+      },
+      {
+        "url": "https://brothermobilesolutions.com/products/media/tapes/tze335/",
+        "finalUrl": "https://brothermobilesolutions.com/products/media/tapes/tze335/",
+        "status": "reachable",
+        "httpStatus": 200,
+        "reason": "HTTP reachability only; claims still require review"
+      },
+      {
+        "url": "https://brothermobilesolutions.com/products/media/tapes/tze631/",
+        "finalUrl": "https://brothermobilesolutions.com/products/media/tapes/tze631/",
+        "status": "reachable",
+        "httpStatus": 200,
+        "reason": "HTTP reachability only; claims still require review"
+      }
+    ],
+    "passed": true
+  },
+  "deployment": {
+    "status": "unavailable",
+    "reason": "Public deployment is pending owner approval"
+  },
+  "queue": [
+    {
+      "id": "tze-631",
+      "reason": "Manufacturer page title and heading report 18 mm while other Brother catalog material reports 12 mm. Excluded until the conflict is resolved; do not infer compatibility from the SKU.",
+      "sourceUrl": "https://brothermobilesolutions.com/products/media/tapes/tze631/",
+      "action": "manual_source_review",
+      "publish": false
+    },
+    {
+      "id": "other-models-and-specialty-tapes",
+      "reason": "Outside the V1 scope. No extrapolation to other models, heat-shrink, third-party cartridges or safety-critical applications.",
+      "sourceUrl": "https://www.brother-usa.com/p/label-makers/PTD210",
+      "action": "manual_source_review",
+      "publish": false
+    }
+  ]
+}

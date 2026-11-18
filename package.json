@@ -1,0 +1,16 @@
+{
+  "name": "tapeshelf-reference",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "check": "node scripts/check.mjs",
+    "links": "node scripts/operations.mjs links",
+    "report": "node scripts/operations.mjs report",
+    "operations": "node scripts/operations.mjs all",
+    "preview": "node scripts/serve.mjs"
+  }
+}

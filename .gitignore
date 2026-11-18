@@ -1,0 +1,7 @@
+dist/
+reports/
+.env*
+!.env.example
+node_modules/
+*.zip
+.sites-local/

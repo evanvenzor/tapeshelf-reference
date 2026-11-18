@@ -1,0 +1,25 @@
+name: Reference correction
+description: Report a source-backed correction or broken link
+title: "Correction: "
+body:
+  - type: markdown
+    attributes:
+      value: Do not include personal information, order numbers, payment details or credentials. Reports may be public.
+  - type: input
+    id: record
+    attributes:
+      label: Tape code or affected page
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What changed or appears incorrect?
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Manufacturer source URL
+    validations:
+      required: true
